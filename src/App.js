@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
+import './FlipkartApp.css';
 
 const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:3000/api';
+
+// Flipkart-style categories
+const CATEGORIES = [
+  { id: 'electronics', name: 'Electronics', icon: '📱' },
+  { id: 'fashion', name: 'Fashion', icon: '👕' },
+  { id: 'home-kitchen', name: 'Home & Kitchen', icon: '🏠' },
+  { id: 'books', name: 'Books', icon: '📚' },
+  { id: 'sports', name: 'Sports', icon: '⚽' },
+  { id: 'beauty', name: 'Beauty', icon: '💄' }
+];
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -139,9 +150,13 @@ function App() {
 
   return (
     <div className="app">
-      <header className="header">
+      <header className="flipkart-header">
         <div className="container">
-          <h1 className="logo">🛒 ShopEasy</h1>
+          <h1 className="flipkart-logo">Flipkart</h1>
+          <div className="search-container">
+            <input type="text" placeholder="Search for products, brands and more" className="search-input" />
+            <button className="search-btn">🔍</button>
+          </div>
           <nav className="nav">
             <div className="user-info">
               <span>Welcome, {user.name}!</span>
