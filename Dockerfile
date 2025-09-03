@@ -3,6 +3,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 COPY . .
+ENV REACT_APP_API_URL=http://api-gw-959974147.us-east-1.elb.amazonaws.com/api
 RUN npm run build
 
 FROM nginx:alpine
